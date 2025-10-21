@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Extrato Bancário</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    input[type="file"] {
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      background-color: #fff;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #eee;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h2>📄 Leitor de Extrato Bancário (PDF)</h2>
+  <input type="file" id="fileInput" accept="application/pdf" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+
+
+<button id="btnExport" style="display: none;">💾 Salvar em Excel</button>
+<div id="resumoTotais" style="margin-top: 30px; font-size: 16px; display: none;"></div>
+  
+  <table id="tabelaExtrato">
+    <thead></thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="extrato-parser.js"></script>
+</body>
+</html>
