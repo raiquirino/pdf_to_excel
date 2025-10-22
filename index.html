@@ -3,28 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <title>Extrato Bancário</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
-  <style>
+  <link rel="stylesheet" href="style.css" />
 
-  </style>
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+  <script>
+    // Define o worker do PDF.js
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+  </script>
+
+  <!-- XLSX para exportar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
   <h2>📄 Leitor de Extrato Bancário (PDF)</h2>
+
+  <!-- Upload do PDF -->
   <input type="file" id="fileInput" accept="application/pdf" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
-
-
-<button id="btnExport" style="display: none;">💾 Salvar em Excel</button>
-<div id="resumoTotais" style="margin-top: 30px; font-size: 16px; display: none;"></div>
+  <!-- Botões principais -->
+  <button id="btnFormatarHistorico" style="display: none;">🧹 Formatar Histórico</button>
+  <div style="margin-top: 20px;">
+  </div>
   
+  <!-- Campo de filtro e botão de remover linhas -->
+  <div id="removerContainer" style="margin-top: 20px; display: none;">
+    <button id="btnRemoverTextoHistorico" style="display: none;">✂️ Remover Parte do Histórico</button>
+    <button id="btnRemoverLinhas">🗑️ Remover Linhas</button>
+    <input type="text" id="filtroTexto" placeholder="Digite termos para remover" style="width: 300px; padding: 8px;" />
+  </div>
+  
+  <!-- Resumo dos totais -->
+  <div id="resumoTotais" style="margin-top: 30px; font-size: 16px; display: none;"></div>
+  <button id="btnExport" style="display: none;">💾 Salvar em Excel</button>
+  
+
+  <!-- Tabela de extrato -->
   <table id="tabelaExtrato">
     <thead></thead>
     <tbody></tbody>
   </table>
 
+  <!-- Script principal -->
   <script src="extrato-parser.js"></script>
 </body>
 </html>
